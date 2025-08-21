@@ -11,3 +11,7 @@ If `SPI.clock.clkdiv_pre` is set to anything non-zero, the target will not send 
 ### Pin mapping
 
 Currently the pins are hard-coded to GPIO12 for SWCLK and GPIO11 for SWDIO. I need to try and see if they works on any other pins or not.
+
+### Fallback to GPIO bitbang is removed
+
+Need some cleanup before putting this back
