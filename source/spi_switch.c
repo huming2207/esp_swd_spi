@@ -381,6 +381,9 @@ void DAP_SPI_Init()
     gpio_iomux_input(GPIO_NUM_11, FUNC_GPIO11_FSPID, FSPID_IN_IDX);
     gpio_iomux_output(GPIO_NUM_11, FUNC_GPIO11_FSPID);
 
+    gpio_ll_set_drive_capability(&GPIO, GPIO_NUM_12, 0);
+    gpio_ll_set_drive_capability(&GPIO, GPIO_NUM_11, 0);
+
     GPIO.func_out_sel_cfg[GPIO_NUM_11].oen_sel = 0;
     GPIO.func_out_sel_cfg[GPIO_NUM_12].oen_sel = 0;
 
@@ -425,9 +428,9 @@ void DAP_SPI_Init()
     // See TRM `SPI_CLOCK_REG`
     DAP_SPI.clock.clk_equ_sysclk = false;
     DAP_SPI.clock.clkdiv_pre = 0;
-    DAP_SPI.clock.clkcnt_n = SPI_40MHz_DIV - 1;
-    DAP_SPI.clock.clkcnt_h = SPI_40MHz_DIV / 2 - 1;
-    DAP_SPI.clock.clkcnt_l = SPI_40MHz_DIV - 1;
+    DAP_SPI.clock.clkcnt_n = (SPI_40MHz_DIV - 1);
+    DAP_SPI.clock.clkcnt_h = (SPI_40MHz_DIV / 2 - 1);
+    DAP_SPI.clock.clkcnt_l = (SPI_40MHz_DIV - 1);
 
     // MISO delay setting
     DAP_SPI.user.rsck_i_edge = true;
